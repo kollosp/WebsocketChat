@@ -2,3 +2,4 @@ node_modules
 const.js
 const.json
 .idea
+debug.log

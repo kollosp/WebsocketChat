@@ -1,3 +1,4 @@
+require('./logger')
 
 const CONST = require('./constModule')()
 
