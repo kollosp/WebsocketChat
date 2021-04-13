@@ -2,24 +2,26 @@ require('./logger')
 
 const CONST = require('./constModule')()
 
+console.log("Run websocket server stand alone")
+
 const WebSocket = require('ws');
 const http = require('http');
 let wss;
 let httpServer;
 
 
-if(CONST.httpServer) {
-    console.log("Run websocket server stand alone")
+if(!CONST.httpServer) {
+    console.log(`${CONST.prefix}  Run websocket server stand alone`)
     wss = new WebSocket.Server({port: CONST.wsport});
 }else{
-    console.log("Run websocket server on http server")
-    httpServer = http.createServer();
+    console.log(`${CONST.prefix} Run websocket server on http server`)
+    httpServer = http.createServer((req, res)=> {res.send("Hello world")});
     wss = new WebSocket.Server({noServer: true});
 
     httpServer.on('')
 
     httpServer.on('upgrade', function upgrade(request, socket, head) {
-        console.log("Received upgrade.")
+        console.log(`${CONST.prefix} Received upgrade.`)
 
         wss.handleUpgrade(request, socket, head, function done(ws) {
             wss.emit('connection', ws, request);
