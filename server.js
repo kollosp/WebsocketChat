@@ -18,10 +18,10 @@ if(!CONST.httpServer) {
 
     httpServer = http.createServer((req, res)=> {
         console.log(`${CONST.prefix} Http message received`)
-        console.log(`${CONST.prefix} Headers: \n${JSON.stringify(req.headers)}`)
-        console.log(`${CONST.prefix} RawHeaders: \n${JSON.stringify(req.rawHeaders)}`)
-        console.log(`${CONST.prefix} Req : \n${Object.keys(req)}`)
-        console.log(`${CONST.prefix} Upgrade : \n${req.upgrade}`)
+        console.log(`${CONST.prefix} Headers: \n${JSON.stringify(req.headers, null, 4)}`)
+        console.log(`${CONST.prefix} RawHeaders: \n${JSON.stringify(req.rawHeaders, null, 4)}`)
+        console.log(`${CONST.prefix} Req : ${Object.keys(req)}`)
+        console.log(`${CONST.prefix} Upgrade : ${req.upgrade}`)
         res.writeHead(200, {'Content-Type': 'text/plain'});
         res.write('Hello World!');
         res.end();
