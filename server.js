@@ -18,8 +18,6 @@ if(!CONST.httpServer) {
     httpServer = http.createServer((req, res)=> {res.send("Hello world")});
     wss = new WebSocket.Server({noServer: true});
 
-    httpServer.on('')
-
     httpServer.on('upgrade', function upgrade(request, socket, head) {
         console.log(`${CONST.prefix} Received upgrade.`)
 
