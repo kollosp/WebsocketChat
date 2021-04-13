@@ -15,7 +15,12 @@ if(!CONST.httpServer) {
     wss = new WebSocket.Server({port: CONST.wsport});
 }else{
     console.log(`${CONST.prefix} Run websocket server on http server`)
-    httpServer = http.createServer((req, res)=> {res.send("Hello world")});
+    httpServer = http.createServer((req, res)=> {
+        console.log(`${CONST.prefix} Http message received, ${res.headers}`)
+
+        res.statusCode(200)
+        res.send("Hello world!")
+    });
     wss = new WebSocket.Server({noServer: true});
 
     httpServer.on('upgrade', function upgrade(request, socket, head) {
