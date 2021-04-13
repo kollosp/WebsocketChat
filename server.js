@@ -17,7 +17,9 @@ if(!CONST.httpServer) {
     console.log(`${CONST.prefix} Run websocket server on http server`)
 
     httpServer = http.createServer((req, res)=> {
-        console.log(`${CONST.prefix} Http message received, ${req.headers}, ${Object.keys(req)}`)
+        console.log(`${CONST.prefix} Http message received, ${Object.keys(req)}`)
+        console.log(`${CONST.prefix} Headers: \n${JSON.stringify(req.headers)}`)
+        console.log(`${CONST.prefix} Req : \n${Object.keys(req)}`)
         res.writeHead(200, {'Content-Type': 'text/plain'});
         res.write('Hello World!');
         res.end();
