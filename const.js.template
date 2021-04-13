@@ -3,5 +3,6 @@ module.exports = {
     wsdomain: "localhost",
     wspath: "",
     messageCount: 3,
-    prefix: "==>"
+    prefix: "==>",
+    httpServer: false,
 }
